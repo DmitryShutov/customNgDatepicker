@@ -124,3 +124,7 @@
 	background: #ff5c5b;
 	color: #fff;
 }
+
+.ng-datepicker-input {
+	cursor: pointer;
+}
