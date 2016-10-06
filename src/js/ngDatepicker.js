@@ -103,7 +103,7 @@ angular.module('jkuri.datepicker', [])
 
 			// if clicked outside of calendar
 			var classList = ['ng-datepicker', 'ng-datepicker-input'];
-            if (attrs.id !== undefined) classList.push(attrs.id);
+			if (attrs.id !== undefined) classList = [attrs.id];
 			$document.on('click', function (e) {
 				if (!scope.calendarOpened) return;
 
