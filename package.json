@@ -1,5 +1,5 @@
 {
-  "name": "ng-datepicker",
+  "name": "ng-datepicker-custom",
   "version": "1.0.0",
   "description": "AngularJS Datepicker",
   "main": "index.js",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/jkuri/ngDatepicker/issues"
   },
-  "homepage": "https://github.com/jkuri/ngDatepicker"
+  "homepage": "https://github.com/jkuri/ngDatepicker",
+  "dependencies": {
+    "angular-mask": "^1.4.0"
+  }
 }

@@ -1,2 +1,2 @@
 require('./src/js/ngDatepicker.js');
-module.exports = 'ng-datepicker';
+module.exports = 'ng-datepicker-custom';

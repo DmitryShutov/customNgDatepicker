@@ -1,6 +1,6 @@
-angular.module('jkuri.datepicker', [])
+angular.module('jkuri.datepicker.custom', ['ngMask'])
 
-.directive('ngDatepicker', ['$document', function($document) {
+.directive('ngDatepickerCustom', ['$document', function($document) {
 	'use strict';
 
 	var setScopeValues = function (scope, attrs) {
@@ -106,6 +106,7 @@ angular.module('jkuri.datepicker', [])
 			if (attrs.id !== undefined) classList = [attrs.id];
 			$document.on('click', function (e) {
 				if (!scope.calendarOpened) return;
+				scope.setModel();
 
 				var i = 0,
 					element;
@@ -137,9 +138,19 @@ angular.module('jkuri.datepicker', [])
 				}
 			};
 
+			scope.setModel = function () {
+				if (scope.viewValue && scope.viewValue.length === scope.format.length) {
+					var dateCorrectFormat = moment(new Date(scope.viewValue));
+					ngModel.$setViewValue(dateCorrectFormat.format(scope.format));
+					scope.closeCalendar();
+					date = dateCorrectFormat;
+					setTimeout(scope.showCalendar(), 0);
+				}
+      }
+
 		},
 		template: 
-		'<div><input type="text" readonly ng-focus="showCalendar()" ng-value="viewValue" class="ng-datepicker-input" placeholder="{{ placeholder }}"></div>' +
+		'<div><input type="text" ng-focus="showCalendar()" ng-model="viewValue" ng-change="setModel()" class="ng-datepicker-input" mask="39.19.2999" placeholder="{{ placeholder }}"></div>' +
 		'<div class="ng-datepicker" ng-show="calendarOpened">' +
 		'  <div class="controls">' +
 		'    <div class="left">' +
