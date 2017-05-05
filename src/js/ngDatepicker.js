@@ -5,7 +5,7 @@ angular.module('jkuri.datepicker.custom', ['ngMask'])
 
 	var setScopeValues = function (scope, attrs) {
 		scope.format = attrs.format || 'YYYY-MM-DD';
-		scope.viewFormat = attrs.viewFormat || 'Do MMMM YYYY';
+		scope.viewFormat = 'DD.MM.YYYY';
 		scope.locale = attrs.locale || 'en';
 		scope.firstWeekDaySunday = scope.$eval(attrs.firstWeekDaySunday) || false; 
 		scope.placeholder = attrs.placeholder || '';
@@ -140,7 +140,7 @@ angular.module('jkuri.datepicker.custom', ['ngMask'])
 
 			scope.setModel = function () {
 				if (scope.viewValue && scope.viewValue.length === scope.format.length) {
-					var dateCorrectFormat = moment(new Date(scope.viewValue));
+					var dateCorrectFormat = moment(scope.viewValue, scope.viewFormat);
 					ngModel.$setViewValue(dateCorrectFormat.format(scope.format));
 					scope.closeCalendar();
 					date = dateCorrectFormat;
