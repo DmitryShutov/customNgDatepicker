@@ -133,7 +133,7 @@ angular.module('jkuri.datepicker.custom', ['ngMask'])
 			ngModel.$render = function () {
 				var newValue = ngModel.$viewValue;
 				if (newValue !== undefined) {
-					scope.viewValue = newValue ? moment(newValue).format(attrs.viewFormat) : '';
+					scope.viewValue = newValue ? moment(newValue).format(scope.viewFormat) : '';
 					scope.dateValue = newValue;
 				}
 			};
